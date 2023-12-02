@@ -1,8 +1,4 @@
-import dis
 from dataclasses import dataclass
-from textwrap import dedent
-
-from vm import VirtualMachine
 
 
 @dataclass
@@ -692,6 +688,7 @@ print("Assert test case for greater")
 """)
 ]
 
+
 ###################################
 # FUNCTION CASES
 ###################################
@@ -1120,6 +1117,7 @@ def main():
 list(main())
 """)
 ]
+
 
 ###################################
 # OLD PHILL CASES
@@ -3326,6 +3324,7 @@ assert(c == 1)
 """)
 ]
 
+
 EXCEPTIONS_CASES = [
     Case(
         name="catching_IndexError",
@@ -3681,6 +3680,7 @@ print(test_func_name.removesuffix("_name"))
 """),
 ]
 
+
 PYTHON_3_10_NEW_CASES = [
     Case(
         name="parenthesized_context_managers",
@@ -3772,6 +3772,7 @@ print(a.bit_count())
 """),
 ]
 
+
 PYTHON_3_11_NEW_CASES = [
     Case(
         name="TypedDict_items_not_required",
@@ -3834,3 +3835,18 @@ except ExceptionGroup as eg:
     print(eg.exceptions)
 """)
 ]
+
+
+TEST_CASES = \
+    BASIC_UNSTRUCTURED_CASES + \
+    FUNCTION_CASES + \
+    GENERATOR_CASES + \
+    PHILL_CASES + \
+    WITH_CASES + \
+    EXCEPTIONS_CASES + \
+    STUDENT_CASES + \
+    SMART_CASES + \
+    PYTHON_3_8_NEW_CASES + \
+    PYTHON_3_9_NEW_CASES + \
+    PYTHON_3_10_NEW_CASES + \
+    PYTHON_3_11_NEW_CASES

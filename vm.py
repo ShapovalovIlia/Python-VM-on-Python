@@ -1,14 +1,8 @@
-"""
-Simplified VM code which works for some cases.
-You need extend/rewrite code to pass all cases.
-"""
-
 import builtins
 import dis
 import types
 import typing as tp
 import operator
-from textwrap import dedent
 
 
 class Frame:
@@ -452,7 +446,7 @@ class VirtualMachine:
         :param code_obj: code for interpreting
         """
         globals_context: dict[str, tp.Any] = {}
-        frame = Frame(code_obj, builtins.__dict__, globals_context, globals_context)
+        frame = Frame(code_obj, builtins.globals()['__builtins__'], globals_context, globals_context)
         return frame.run()
 
 
@@ -534,18 +528,3 @@ class BinaryOp:
         INPLACE_OR: operator.__ior__,
         INPLACE_XOR: operator.__ixor__,
     }
-
-
-def debug_test(text_code: str) -> None:
-    print(text_code)
-    dis.dis(text_code)
-    print("#" * 200)
-    print("#" * 200)
-    print("#" * 200)
-    code = compile(dedent(text_code), '<string>', 'exec')
-    VirtualMachine().run(code)
-
-debug_test(r"""
-def f():
-    print(17)
-f()""")
